@@ -46,7 +46,7 @@ namespace Printing.Kiosk.Forms
                 if (serialPort1.IsOpen == false)
                 {
                     serialPort1.BaudRate = 9600;
-                    serialPort1.PortName = "COM5";
+                    serialPort1.PortName = "COM14";
                     serialPort1.Parity = Parity.None;
                     serialPort1.StopBits = StopBits.One;
                     serialPort1.DataBits = 8;
@@ -105,13 +105,16 @@ namespace Printing.Kiosk.Forms
                         if (val[0] == "1")
                         {
 
-                            
+                            InsertedCoin = InsertedCoin + 1;
+                            this.txtCurrentBal.Text = Convert.ToString(InsertedCoin);
+                            this.textBox1.Text = text;
+
                             var TAmount = Convert.ToInt32(txtTotalAmount.Text);
                             var TCurBal = Convert.ToInt32(txtCurrentBal.Text);
-
+                           
                             if (TAmount > TCurBal)
                             {
-                                InsertedCoin = InsertedCoin + 1;
+                                
                                 //InsertedCoin = TCurBal + Convert.ToInt32(textBox1.Text);
                                 //txtCurrentBal.Text = Convert.ToString(InsertedCoin);
                                 if (Convert.ToInt32(txtCurrentBal.Text) == TAmount)
@@ -122,8 +125,9 @@ namespace Printing.Kiosk.Forms
                                         btnWithPaper.Enabled = false;
                                         btnPrint.Enabled = true;
                                 }
+                                
                             }
-                            else
+                            else 
                             {
                                 btnDispense.Enabled = true;
                                 MessageBox.Show("Balance is now sufficient", "Transaction Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -163,8 +167,7 @@ namespace Printing.Kiosk.Forms
                             btnDispense.Enabled = false;
                         }
                     }
-                    this.txtCurrentBal.Text = Convert.ToString(InsertedCoin);
-                    this.textBox1.Text = text;
+
                 }
             }
             catch (Exception ex)

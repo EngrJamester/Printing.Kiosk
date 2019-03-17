@@ -450,6 +450,7 @@ namespace Printing.Kiosk.Forms
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if(txtMultiplier.Text != "")
             txtMultiplier.Text = txtMultiplier.Text.Remove(txtMultiplier.Text.Length - 1, 1);
         }
 
