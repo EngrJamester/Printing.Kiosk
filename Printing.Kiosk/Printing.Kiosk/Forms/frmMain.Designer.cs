@@ -143,6 +143,7 @@
             this.btnHelp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnHelp.Textcolor = System.Drawing.Color.White;
             this.btnHelp.TextFont = new System.Drawing.Font("Century Gothic", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHelp.Click += new System.EventHandler(this.btnHelp_Click);
             // 
             // btnPrintDocument
             // 

@@ -118,7 +118,7 @@ namespace Printing.Kiosk
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show(ex.Message,"Transaction");
             }
         }
 
@@ -343,6 +343,14 @@ namespace Printing.Kiosk
         private void frmMain_Load(object sender, EventArgs e)
         {
             Location = 0;
+        }
+
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            string HelpLocation = System.IO.Directory.GetCurrentDirectory();
+            var HL = HelpLocation + "\\HelpSection.docx";
+            string HelpFileLocation = pdfPrinting.ConvertDocToPdf(HL);
+            pdfViewer1.OpenDocument(HelpFileLocation);
         }
     }
 }
