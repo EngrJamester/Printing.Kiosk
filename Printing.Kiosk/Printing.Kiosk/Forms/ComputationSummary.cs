@@ -41,17 +41,25 @@ namespace Printing.Kiosk.Forms
 
         public void InitializeSerialPort()
         {
-            if (serialPort1.IsOpen == false)
+            try
             {
-                serialPort1.BaudRate = 9600;
-                serialPort1.PortName = "COM5";
-                serialPort1.Parity = Parity.None;
-                serialPort1.StopBits = StopBits.One;
-                serialPort1.DataBits = 8;
-                serialPort1.Handshake = Handshake.None;
-                serialPort1.RtsEnable = true;
-                serialPort1.Open();
+                if (serialPort1.IsOpen == false)
+                {
+                    serialPort1.BaudRate = 9600;
+                    serialPort1.PortName = "COM5";
+                    serialPort1.Parity = Parity.None;
+                    serialPort1.StopBits = StopBits.One;
+                    serialPort1.DataBits = 8;
+                    serialPort1.Handshake = Handshake.None;
+                    serialPort1.RtsEnable = true;
+                    serialPort1.Open();
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,"Transaction",MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+          
 
         }
 
@@ -175,7 +183,7 @@ namespace Printing.Kiosk.Forms
         #endregion
         private void btnPrint_Click(object sender, EventArgs e)
         {
-            if (CheckReaminingPaperInDispenser())
+            if (CheckReaminingPaperInDispenser() && !withPaper)
             {
                 var MsgStat = new MessageAlerts();
                 MsgStat.ExceptionMessage("No More paper left in the Dispenser");

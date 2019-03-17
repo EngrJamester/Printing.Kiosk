@@ -35,13 +35,32 @@ namespace Printing.Kiosk.Forms
 
         public static string LocalIP()
         {
-            string hostName = Dns.GetHostName(); // Retrive the Name of HOST  
-            //Console.WriteLine(hostName);
-            // Get the IP  
-            //string myIP = Dns.GetHostByName(hostName).AddressList[0].ToString();
-            string myIP = Dns.GetHostByName(hostName).AddressList[1].ToString();
-         
-            return myIP;
+            try
+            {
+                string myIP = "";
+                string hostName = Dns.GetHostName(); // Retrive the Name of HOST  
+                                                     //Console.WriteLine(hostName);
+                                                     // Get the IP  
+                                                     //string myIP = Dns.GetHostByName(hostName).AddressList[0].ToString();
+                var ct = Dns.GetHostByName(hostName).AddressList.Length;
+                for (int i=0;i< ct; i++)
+                {
+                    if(Dns.GetHostByName(hostName).AddressList[i].ToString() != "" && ct != 2)
+                    {
+                        myIP = Dns.GetHostByName(hostName).AddressList[i].ToString();
+                    }else if(ct == 2)
+                    {
+                        myIP = Dns.GetHostByName(hostName).AddressList[1].ToString();
+                    }
+                }
+                return myIP;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message,"Transaction");
+                return null;
+            }
+           
         }
 
         private void btnClose_Click(object sender, EventArgs e)
