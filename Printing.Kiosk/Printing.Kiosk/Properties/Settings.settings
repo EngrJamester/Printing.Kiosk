@@ -1,7 +1,15 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Printing.Kiosk.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="FolderPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\SaveFiles\</Value>
+    </Setting>
+    <Setting Name="AdminPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Admin\</Value>
+    </Setting>
+    <Setting Name="WirelessPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\FTP_Location</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

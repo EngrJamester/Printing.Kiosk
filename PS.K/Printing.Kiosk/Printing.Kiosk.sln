@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Printing.Kiosk", "Printing.Kiosk\Printing.Kiosk.csproj", "{C8680F39-E824-437B-AA7E-2C96EAF2B9BA}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Printing.Kiosk.Setup", "Printing.Kiosk.Setup\Printing.Kiosk.Setup.vdproj", "{B0A4AC68-02DE-4BC9-997F-3ECFFA02679F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8680F39-E824-437B-AA7E-2C96EAF2B9BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8680F39-E824-437B-AA7E-2C96EAF2B9BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8680F39-E824-437B-AA7E-2C96EAF2B9BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8680F39-E824-437B-AA7E-2C96EAF2B9BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0A4AC68-02DE-4BC9-997F-3ECFFA02679F}.Debug|Any CPU.ActiveCfg = Debug
+		{B0A4AC68-02DE-4BC9-997F-3ECFFA02679F}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {47F23ECF-5749-4F6D-B9B4-E0748A7F13E7}
+	EndGlobalSection
+EndGlobal
