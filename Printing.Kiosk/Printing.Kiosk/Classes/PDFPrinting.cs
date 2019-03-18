@@ -170,7 +170,7 @@ namespace Printing.Kiosk.Classes
                 openFile.InitialDirectory = "This PC";
 
             openFile.Filter = "DOC files (*.doc)|*.docx ";
-            openFile.Filter = "Office Files|*.docx;*.pdf;*.pptx;*.xls;*.xlsx";
+            openFile.Filter = "Office Files|*.docx;*.doc;*.pdf;*.pptx;*.ppt;*.xls;*.xlsx";
             
 
             if (openFile.ShowDialog() == DialogResult.OK)
