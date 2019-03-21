@@ -54,11 +54,26 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.groupBox = new System.Windows.Forms.GroupBox();
             this.groupBoxButtons = new System.Windows.Forms.GroupBox();
-            this.lblAdminStatus = new System.Windows.Forms.Label();
             this.btnRefillPaper = new Bunifu.Framework.UI.BunifuTileButton();
+            this.lblAdminStatus = new System.Windows.Forms.Label();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.txtPaperCount = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lblStatPaper = new System.Windows.Forms.Label();
+            this.lblAdminStatusPaper = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txtCode = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnOk = new Bunifu.Framework.UI.BunifuTileButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox.SuspendLayout();
             this.groupBoxButtons.SuspendLayout();
+            this.tabControl.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -79,7 +94,7 @@
             this.btnUpdate.ImageZoom = 40;
             this.btnUpdate.LabelPosition = 41;
             this.btnUpdate.LabelText = "Update";
-            this.btnUpdate.Location = new System.Drawing.Point(8, 15);
+            this.btnUpdate.Location = new System.Drawing.Point(387, 8);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(6);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(115, 107);
@@ -99,7 +114,7 @@
             this.btnShutdown.ImageZoom = 40;
             this.btnShutdown.LabelPosition = 41;
             this.btnShutdown.LabelText = "Shutdown";
-            this.btnShutdown.Location = new System.Drawing.Point(141, 15);
+            this.btnShutdown.Location = new System.Drawing.Point(234, 20);
             this.btnShutdown.Margin = new System.Windows.Forms.Padding(6);
             this.btnShutdown.Name = "btnShutdown";
             this.btnShutdown.Size = new System.Drawing.Size(115, 107);
@@ -119,7 +134,7 @@
             this.btnCancel.ImageZoom = 45;
             this.btnCancel.LabelPosition = 41;
             this.btnCancel.LabelText = "Cancel";
-            this.btnCancel.Location = new System.Drawing.Point(425, 555);
+            this.btnCancel.Location = new System.Drawing.Point(400, 611);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(6);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(118, 107);
@@ -129,10 +144,10 @@
             // txtMultiplier
             // 
             this.txtMultiplier.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMultiplier.Location = new System.Drawing.Point(32, 116);
+            this.txtMultiplier.Location = new System.Drawing.Point(17, 33);
             this.txtMultiplier.Name = "txtMultiplier";
             this.txtMultiplier.ReadOnly = true;
-            this.txtMultiplier.Size = new System.Drawing.Size(483, 66);
+            this.txtMultiplier.Size = new System.Drawing.Size(353, 66);
             this.txtMultiplier.TabIndex = 3;
             // 
             // label1
@@ -148,10 +163,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(34, 90);
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(19, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(146, 23);
+            this.label2.Size = new System.Drawing.Size(106, 16);
             this.label2.TabIndex = 5;
             this.label2.Text = "Price Multiplier";
             // 
@@ -170,10 +186,10 @@
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
-            this.lblStatus.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblStatus.Location = new System.Drawing.Point(35, 185);
+            this.lblStatus.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Location = new System.Drawing.Point(19, 99);
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(96, 21);
+            this.lblStatus.Size = new System.Drawing.Size(77, 16);
             this.lblStatus.TabIndex = 7;
             this.lblStatus.Text = "No update";
             // 
@@ -333,32 +349,20 @@
             this.groupBox.Controls.Add(this.btnFive);
             this.groupBox.Controls.Add(this.btnSeven);
             this.groupBox.Controls.Add(this.btnSix);
-            this.groupBox.Location = new System.Drawing.Point(12, 209);
+            this.groupBox.Location = new System.Drawing.Point(12, 252);
             this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(531, 325);
+            this.groupBox.Size = new System.Drawing.Size(531, 333);
             this.groupBox.TabIndex = 23;
             this.groupBox.TabStop = false;
             // 
             // groupBoxButtons
             // 
-            this.groupBoxButtons.Controls.Add(this.btnRefillPaper);
-            this.groupBoxButtons.Controls.Add(this.btnUpdate);
             this.groupBoxButtons.Controls.Add(this.btnShutdown);
-            this.groupBoxButtons.Location = new System.Drawing.Point(12, 540);
+            this.groupBoxButtons.Location = new System.Drawing.Point(12, 591);
             this.groupBoxButtons.Name = "groupBoxButtons";
-            this.groupBoxButtons.Size = new System.Drawing.Size(404, 136);
+            this.groupBoxButtons.Size = new System.Drawing.Size(374, 136);
             this.groupBoxButtons.TabIndex = 24;
             this.groupBoxButtons.TabStop = false;
-            // 
-            // lblAdminStatus
-            // 
-            this.lblAdminStatus.AutoSize = true;
-            this.lblAdminStatus.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdminStatus.Location = new System.Drawing.Point(451, 86);
-            this.lblAdminStatus.Name = "lblAdminStatus";
-            this.lblAdminStatus.Size = new System.Drawing.Size(64, 23);
-            this.lblAdminStatus.TabIndex = 25;
-            this.lblAdminStatus.Text = "Status";
             // 
             // btnRefillPaper
             // 
@@ -366,35 +370,179 @@
             this.btnRefillPaper.color = System.Drawing.Color.DarkGray;
             this.btnRefillPaper.colorActive = System.Drawing.Color.DimGray;
             this.btnRefillPaper.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRefillPaper.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRefillPaper.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefillPaper.ForeColor = System.Drawing.Color.White;
             this.btnRefillPaper.Image = ((System.Drawing.Image)(resources.GetObject("btnRefillPaper.Image")));
-            this.btnRefillPaper.ImagePosition = 18;
+            this.btnRefillPaper.ImagePosition = 17;
             this.btnRefillPaper.ImageZoom = 40;
-            this.btnRefillPaper.LabelPosition = 36;
-            this.btnRefillPaper.LabelText = "Paper Count";
-            this.btnRefillPaper.Location = new System.Drawing.Point(266, 15);
+            this.btnRefillPaper.LabelPosition = 34;
+            this.btnRefillPaper.LabelText = "Update Count";
+            this.btnRefillPaper.Location = new System.Drawing.Point(383, 6);
             this.btnRefillPaper.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnRefillPaper.Name = "btnRefillPaper";
-            this.btnRefillPaper.Size = new System.Drawing.Size(123, 107);
+            this.btnRefillPaper.Size = new System.Drawing.Size(133, 111);
             this.btnRefillPaper.TabIndex = 2;
             this.btnRefillPaper.Click += new System.EventHandler(this.btnRefillPaper_Click);
+            // 
+            // lblAdminStatus
+            // 
+            this.lblAdminStatus.AutoSize = true;
+            this.lblAdminStatus.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdminStatus.ForeColor = System.Drawing.Color.White;
+            this.lblAdminStatus.Location = new System.Drawing.Point(293, 11);
+            this.lblAdminStatus.Name = "lblAdminStatus";
+            this.lblAdminStatus.Size = new System.Drawing.Size(52, 19);
+            this.lblAdminStatus.TabIndex = 25;
+            this.lblAdminStatus.Text = "Status";
+            // 
+            // tabControl
+            // 
+            this.tabControl.Controls.Add(this.tabPage1);
+            this.tabControl.Controls.Add(this.tabPage2);
+            this.tabControl.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl.Location = new System.Drawing.Point(12, 93);
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
+            this.tabControl.Size = new System.Drawing.Size(535, 157);
+            this.tabControl.TabIndex = 26;
+            this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.BackColor = System.Drawing.Color.Gray;
+            this.tabPage1.Controls.Add(this.btnUpdate);
+            this.tabPage1.Controls.Add(this.txtMultiplier);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.lblAdminStatus);
+            this.tabPage1.Controls.Add(this.lblStatus);
+            this.tabPage1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPage1.Location = new System.Drawing.Point(4, 30);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(527, 123);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Multiplier";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.BackColor = System.Drawing.Color.Gray;
+            this.tabPage2.Controls.Add(this.btnRefillPaper);
+            this.tabPage2.Controls.Add(this.txtPaperCount);
+            this.tabPage2.Controls.Add(this.label3);
+            this.tabPage2.Controls.Add(this.lblStatPaper);
+            this.tabPage2.Controls.Add(this.lblAdminStatusPaper);
+            this.tabPage2.Location = new System.Drawing.Point(4, 30);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(527, 123);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Paper Count";
+            // 
+            // txtPaperCount
+            // 
+            this.txtPaperCount.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPaperCount.Location = new System.Drawing.Point(17, 33);
+            this.txtPaperCount.Name = "txtPaperCount";
+            this.txtPaperCount.ReadOnly = true;
+            this.txtPaperCount.Size = new System.Drawing.Size(353, 66);
+            this.txtPaperCount.TabIndex = 31;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(14, 14);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(171, 16);
+            this.label3.TabIndex = 32;
+            this.label3.Text = "Paper Count in Dispenser";
+            // 
+            // lblStatPaper
+            // 
+            this.lblStatPaper.AutoSize = true;
+            this.lblStatPaper.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatPaper.Location = new System.Drawing.Point(23, 102);
+            this.lblStatPaper.Name = "lblStatPaper";
+            this.lblStatPaper.Size = new System.Drawing.Size(77, 16);
+            this.lblStatPaper.TabIndex = 33;
+            this.lblStatPaper.Text = "No update";
+            // 
+            // lblAdminStatusPaper
+            // 
+            this.lblAdminStatusPaper.AutoSize = true;
+            this.lblAdminStatusPaper.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdminStatusPaper.ForeColor = System.Drawing.Color.White;
+            this.lblAdminStatusPaper.Location = new System.Drawing.Point(293, 11);
+            this.lblAdminStatusPaper.Name = "lblAdminStatusPaper";
+            this.lblAdminStatusPaper.Size = new System.Drawing.Size(52, 19);
+            this.lblAdminStatusPaper.TabIndex = 34;
+            this.lblAdminStatusPaper.Text = "Status";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.DimGray;
+            this.panel1.Controls.Add(this.btnOk);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.txtCode);
+            this.panel1.Location = new System.Drawing.Point(0, 84);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(561, 169);
+            this.panel1.TabIndex = 26;
+            // 
+            // txtCode
+            // 
+            this.txtCode.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCode.Location = new System.Drawing.Point(16, 60);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.ReadOnly = true;
+            this.txtCode.Size = new System.Drawing.Size(353, 66);
+            this.txtCode.TabIndex = 26;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(16, 26);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(168, 32);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "Enter Code:";
+            // 
+            // btnOk
+            // 
+            this.btnOk.BackColor = System.Drawing.Color.DarkGray;
+            this.btnOk.color = System.Drawing.Color.DarkGray;
+            this.btnOk.colorActive = System.Drawing.Color.DimGray;
+            this.btnOk.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOk.Font = new System.Drawing.Font("Century Gothic", 15.75F);
+            this.btnOk.ForeColor = System.Drawing.Color.White;
+            this.btnOk.Image = ((System.Drawing.Image)(resources.GetObject("btnOk.Image")));
+            this.btnOk.ImagePosition = 20;
+            this.btnOk.ImageZoom = 40;
+            this.btnOk.LabelPosition = 41;
+            this.btnOk.LabelText = "Ok";
+            this.btnOk.Location = new System.Drawing.Point(400, 34);
+            this.btnOk.Margin = new System.Windows.Forms.Padding(6);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(115, 107);
+            this.btnOk.TabIndex = 26;
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
             // frmAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(573, 683);
+            this.ClientSize = new System.Drawing.Size(562, 743);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.lblAdminStatus);
+            this.Controls.Add(this.tabControl);
             this.Controls.Add(this.groupBoxButtons);
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.bunifuSeparator1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtMultiplier);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAdmin";
@@ -404,6 +552,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox.ResumeLayout(false);
             this.groupBoxButtons.ResumeLayout(false);
+            this.tabControl.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -437,5 +592,16 @@
         private System.Windows.Forms.Label lblAdminStatus;
         private System.Windows.Forms.GroupBox groupBoxButtons;
         private Bunifu.Framework.UI.BunifuTileButton btnRefillPaper;
+        private System.Windows.Forms.TabControl tabControl;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TextBox txtPaperCount;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblStatPaper;
+        private System.Windows.Forms.Label lblAdminStatusPaper;
+        private System.Windows.Forms.Panel panel1;
+        private Bunifu.Framework.UI.BunifuTileButton btnOk;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtCode;
     }
 }

@@ -24,6 +24,9 @@ namespace Printing.Kiosk.Forms
 
         private int PaperCount { get; set; }
 
+        //
+        private bool TabControlValue { get; set; }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -45,14 +48,7 @@ namespace Printing.Kiosk.Forms
         {
             try
             {
-                if (btnUpdate.LabelText == "View M")
-                {
-                    LoadDocument();
-                    btnUpdate.LabelText = "Update";
-                    btnRefillPaper.LabelText = "Paper Count";
-                }
-                else
-                {
+              
                     var path = Properties.Settings.Default.AdminPath + "Admin.xml";
                     var xDoc = XDocument.Load(path);
                     var node = xDoc.Descendants("Admin").FirstOrDefault(cd => cd.Element("multiplier").Value != "");
@@ -62,8 +58,8 @@ namespace Printing.Kiosk.Forms
                     }
                     xDoc.Save(path);
                     lblStatus.Text = "File Has been updated";
-                    lblStatus.ForeColor = Color.Green;
-                }
+                    lblStatus.ForeColor = Color.PaleGreen;
+                
                
             }
             catch (Exception ex)
@@ -80,10 +76,12 @@ namespace Printing.Kiosk.Forms
             try
             {
                 lblAdminStatus.Text = "Not Admin";
-                lblAdminStatus.ForeColor = Color.Red;
-                lblStatus.ForeColor = Color.Red;
+                lblAdminStatus.ForeColor = Color.Salmon;
+                lblStatus.ForeColor = Color.Salmon;
                 groupBoxButtons.Enabled = false;
+                TabControlValue = true;
                 LoadDocument();
+                LoadPaperCount();
             }
             catch (Exception ex)
             {
@@ -140,250 +138,360 @@ namespace Printing.Kiosk.Forms
 
         private void btnOne_Click(object sender, EventArgs e)
         {
-            if(btnUpdate.LabelText == "Update")
+            if(lblAdminStatus.Text == "Admin")
             {
-                ValidateAdmin();
-                lblStatus.Text = "No Update";
-                lblStatus.ForeColor = Color.Red;
-                if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
-                    txtMultiplier.Text = "1";
-                else
-                    txtMultiplier.Text = txtMultiplier.Text + 1;
-            }else if (btnUpdate.LabelText == "View M")
+                if (TabControlValue)
+                {
+                    ValidateAdmin();
+                    lblStatus.Text = "No Update";
+                    lblStatus.ForeColor = Color.Salmon;
+                    if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
+                        txtMultiplier.Text = "1";
+                    else
+                        txtMultiplier.Text = txtMultiplier.Text + 1;
+                }
+                else if (!TabControlValue)
+                {
+                    lblStatPaper.Text = "Paper Count - No Update";
+                    lblStatPaper.ForeColor = Color.Salmon;
+                    if (txtPaperCount.Text == "0" && txtPaperCount.Text != null)
+                        txtPaperCount.Text = "1";
+                    else
+                        txtPaperCount.Text = txtPaperCount.Text + 1;
+                }
+            }else
             {
-                lblStatus.Text = "Paper Count - No Update";
-                lblStatus.ForeColor = Color.Red;
-                if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
-                    txtMultiplier.Text = "1";
+                if (txtCode.Text == "0" && txtCode.Text != null)
+                    txtCode.Text = "1";
                 else
-                    txtMultiplier.Text = txtMultiplier.Text + 1;
+                    txtCode.Text = txtCode.Text + 1;
             }
+           
         }
 
         private void btnTwo_Click(object sender, EventArgs e)
         {
-            if (btnUpdate.LabelText == "Update")
+            if (lblAdminStatus.Text == "Admin")
             {
-                ValidateAdmin();
-                lblStatus.Text = "No Update";
-                lblStatus.ForeColor = Color.Red;
-                if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
-                    txtMultiplier.Text = "2";
-                else
-                    txtMultiplier.Text = txtMultiplier.Text + 2;
-            }
-            else if (btnUpdate.LabelText == "View M")
+                if (TabControlValue)
+                {
+                    ValidateAdmin();
+                    lblStatus.Text = "No Update";
+                    lblStatus.ForeColor = Color.Salmon;
+                    if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
+                        txtMultiplier.Text = "2";
+                    else
+                        txtMultiplier.Text = txtMultiplier.Text + 2;
+                }
+                else if (!TabControlValue)
+                {
+                    lblStatPaper.Text = "Paper Count - No Update";
+                    lblStatPaper.ForeColor = Color.Salmon;
+                    if (txtPaperCount.Text == "0" && txtPaperCount.Text != null)
+                        txtPaperCount.Text = "2";
+                    else
+                        txtPaperCount.Text = txtPaperCount.Text + 2;
+                }
+            }else
             {
-                lblStatus.Text = "Paper Count - No Update";
-                lblStatus.ForeColor = Color.Red;
-                if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
-                    txtMultiplier.Text = "2";
+                if (txtCode.Text == "0" && txtCode.Text != null)
+                    txtCode.Text = "2";
                 else
-                    txtMultiplier.Text = txtMultiplier.Text + 2;
+                    txtCode.Text = txtCode.Text + 2;
             }
         }
 
         private void btnThree_Click(object sender, EventArgs e)
         {
-            if (btnUpdate.LabelText == "Update")
+            if (lblAdminStatus.Text == "Admin")
             {
-                ValidateAdmin();
-                lblStatus.Text = "No Update";
-                lblStatus.ForeColor = Color.Red;
-                if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
-                    txtMultiplier.Text = "3";
-                else
-                    txtMultiplier.Text = txtMultiplier.Text + 3;
-            }
-            else if (btnUpdate.LabelText == "View M")
+                if (TabControlValue)
+                {
+                    ValidateAdmin();
+                    lblStatus.Text = "No Update";
+                    lblStatus.ForeColor = Color.Salmon;
+                    if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
+                        txtMultiplier.Text = "3";
+                    else
+                        txtMultiplier.Text = txtMultiplier.Text + 3;
+                }
+                else if (!TabControlValue)
+                {
+                    lblStatPaper.Text = "Paper Count - No Update";
+                    lblStatPaper.ForeColor = Color.Salmon;
+                    if (txtPaperCount.Text == "0" && txtPaperCount.Text != null)
+                        txtPaperCount.Text = "3";
+                    else
+                        txtPaperCount.Text = txtPaperCount.Text + 3;
+                }
+            }else
             {
-                lblStatus.Text = "Paper Count - No Update";
-                lblStatus.ForeColor = Color.Red;
-                if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
-                    txtMultiplier.Text = "3";
+                if (txtCode.Text == "0" && txtCode.Text != null)
+                    txtCode.Text = "3";
                 else
-                    txtMultiplier.Text = txtMultiplier.Text + 3;
+                    txtCode.Text = txtCode.Text + 3;
             }
         }
 
         private void btnFour_Click(object sender, EventArgs e)
         {
-            if (btnUpdate.LabelText == "Update")
+            if (lblAdminStatus.Text == "Admin")
             {
-                ValidateAdmin();
-                lblStatus.Text = "No Update";
-                lblStatus.ForeColor = Color.Red;
-                if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
-                    txtMultiplier.Text = "4";
-                else
-                    txtMultiplier.Text = txtMultiplier.Text + 4;
+                if (TabControlValue)
+                {
+                    ValidateAdmin();
+                    lblStatus.Text = "No Update";
+                    lblStatus.ForeColor = Color.Salmon;
+                    if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
+                        txtMultiplier.Text = "4";
+                    else
+                        txtMultiplier.Text = txtMultiplier.Text + 4;
+                }
+                else if (!TabControlValue)
+                {
+                    lblStatPaper.Text = "Paper Count - No Update";
+                    lblStatPaper.ForeColor = Color.Salmon;
+                    if (txtPaperCount.Text == "0" && txtPaperCount.Text != null)
+                        txtPaperCount.Text = "4";
+                    else
+                        txtPaperCount.Text = txtPaperCount.Text + 4;
+                }
             }
-            else if (btnUpdate.LabelText == "View M")
+            else
             {
-                lblStatus.Text = "Paper Count - No Update";
-                lblStatus.ForeColor = Color.Red;
-                if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
-                    txtMultiplier.Text = "4";
+                if (txtCode.Text == "0" && txtCode.Text != null)
+                    txtCode.Text = "4";
                 else
-                    txtMultiplier.Text = txtMultiplier.Text + 4;
+                    txtCode.Text = txtCode.Text + 4;
             }
         }
 
         private void btnFive_Click(object sender, EventArgs e)
         {
-            if (btnUpdate.LabelText == "Update")
+            if (lblAdminStatus.Text == "Admin")
             {
-                ValidateAdmin();
-                lblStatus.Text = "No Update";
-                lblStatus.ForeColor = Color.Red;
-                if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
-                    txtMultiplier.Text = "5";
-                else
-                    txtMultiplier.Text = txtMultiplier.Text + 5;
+                if (TabControlValue)
+                {
+                    ValidateAdmin();
+                    lblStatus.Text = "No Update";
+                    lblStatus.ForeColor = Color.Salmon;
+                    if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
+                        txtMultiplier.Text = "5";
+                    else
+                        txtMultiplier.Text = txtMultiplier.Text + 5;
+                }
+                else if (!TabControlValue)
+                {
+                    lblStatPaper.Text = "Paper Count - No Update";
+                    lblStatPaper.ForeColor = Color.Salmon;
+                    if (txtPaperCount.Text == "0" && txtPaperCount.Text != null)
+                        txtPaperCount.Text = "5";
+                    else
+                        txtPaperCount.Text = txtPaperCount.Text + 5;
+                }
             }
-            else if (btnUpdate.LabelText == "View M")
+            else
             {
-                lblStatus.Text = "Paper Count - No Update";
-                lblStatus.ForeColor = Color.Red;
-                if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
-                    txtMultiplier.Text = "5";
+                if (txtCode.Text == "0" && txtCode.Text != null)
+                    txtCode.Text = "5";
                 else
-                    txtMultiplier.Text = txtMultiplier.Text + 5;
+                    txtCode.Text = txtCode.Text + 5;
             }
         }
 
         private void btnSix_Click(object sender, EventArgs e)
         {
-            if (btnUpdate.LabelText == "Update")
+            if (lblAdminStatus.Text == "Admin")
             {
-                ValidateAdmin();
-                lblStatus.Text = "No Update";
-                lblStatus.ForeColor = Color.Red;
-                if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
-                    txtMultiplier.Text = "6";
-                else
-                    txtMultiplier.Text = txtMultiplier.Text + 6;
+                if (TabControlValue)
+                {
+                    ValidateAdmin();
+                    lblStatus.Text = "No Update";
+                    lblStatus.ForeColor = Color.Salmon;
+                    if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
+                        txtMultiplier.Text = "6";
+                    else
+                        txtMultiplier.Text = txtMultiplier.Text + 6;
+                }
+                else if (!TabControlValue)
+                {
+                    lblStatPaper.Text = "Paper Count - No Update";
+                    lblStatPaper.ForeColor = Color.Salmon;
+                    if (txtPaperCount.Text == "0" && txtPaperCount.Text != null)
+                        txtPaperCount.Text = "6";
+                    else
+                        txtPaperCount.Text = txtPaperCount.Text + 6;
+                }
             }
-            else if (btnUpdate.LabelText == "View M")
+            else
             {
-                lblStatus.Text = "Paper Count - No Update";
-                lblStatus.ForeColor = Color.Red;
-                if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
-                    txtMultiplier.Text = "6";
+                if (txtCode.Text == "0" && txtCode.Text != null)
+                    txtCode.Text = "6";
                 else
-                    txtMultiplier.Text = txtMultiplier.Text + 6;
+                    txtCode.Text = txtCode.Text + 6;
             }
         }
 
         private void btnSeven_Click(object sender, EventArgs e)
         {
-            if (btnUpdate.LabelText == "Update")
+            if (lblAdminStatus.Text == "Admin")
             {
-                ValidateAdmin();
-                lblStatus.Text = "No Update";
-                lblStatus.ForeColor = Color.Red;
-                if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
-                    txtMultiplier.Text = "7";
-                else
-                    txtMultiplier.Text = txtMultiplier.Text + 7;
+                if (TabControlValue)
+                {
+                    ValidateAdmin();
+                    lblStatus.Text = "No Update";
+                    lblStatus.ForeColor = Color.Salmon;
+                    if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
+                        txtMultiplier.Text = "7";
+                    else
+                        txtMultiplier.Text = txtMultiplier.Text + 7;
+                }
+                else if (!TabControlValue)
+                {
+                    lblStatPaper.Text = "Paper Count - No Update";
+                    lblStatPaper.ForeColor = Color.Salmon;
+                    if (txtPaperCount.Text == "0" && txtPaperCount.Text != null)
+                        txtPaperCount.Text = "7";
+                    else
+                        txtPaperCount.Text = txtPaperCount.Text + 7;
+                }
             }
-            else if (btnUpdate.LabelText == "View M")
+            else
             {
-                lblStatus.Text = "Paper Count - No Update";
-                lblStatus.ForeColor = Color.Red;
-                if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
-                    txtMultiplier.Text = "7";
+                if (txtCode.Text == "0" && txtCode.Text != null)
+                    txtCode.Text = "7";
                 else
-                    txtMultiplier.Text = txtMultiplier.Text + 7;
+                    txtCode.Text = txtCode.Text + 7;
             }
         }
 
         private void btnEight_Click(object sender, EventArgs e)
         {
-            if (btnUpdate.LabelText == "Update")
+            if (lblAdminStatus.Text == "Admin")
             {
-                ValidateAdmin();
-                lblStatus.Text = "No Update";
-                lblStatus.ForeColor = Color.Red;
-                if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
-                    txtMultiplier.Text = "8";
-                else
-                    txtMultiplier.Text = txtMultiplier.Text + 8;
+                if (TabControlValue)
+                {
+                    ValidateAdmin();
+                    lblStatus.Text = "No Update";
+                    lblStatus.ForeColor = Color.Salmon;
+                    if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
+                        txtMultiplier.Text = "8";
+                    else
+                        txtMultiplier.Text = txtMultiplier.Text + 8;
+                }
+                else if (!TabControlValue)
+                {
+                    lblStatPaper.Text = "Paper Count - No Update";
+                    lblStatPaper.ForeColor = Color.Salmon;
+                    if (txtPaperCount.Text == "0" && txtPaperCount.Text != null)
+                        txtPaperCount.Text = "8";
+                    else
+                        txtPaperCount.Text = txtPaperCount.Text + 8;
+                }
             }
-            else if (btnUpdate.LabelText == "View M")
+            else
             {
-                lblStatus.Text = "Paper Count - No Update";
-                lblStatus.ForeColor = Color.Red;
-                if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
-                    txtMultiplier.Text = "8";
+                if (txtCode.Text == "0" && txtCode.Text != null)
+                    txtCode.Text = "8";
                 else
-                    txtMultiplier.Text = txtMultiplier.Text + 8;
+                    txtCode.Text = txtCode.Text + 8;
             }
         }
 
         private void btnNine_Click(object sender, EventArgs e)
         {
-            if (btnUpdate.LabelText == "Update")
+            if (lblAdminStatus.Text == "Admin")
             {
-                ValidateAdmin();
-                lblStatus.Text = "No Update";
-                lblStatus.ForeColor = Color.Red;
-                if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
-                    txtMultiplier.Text = "9";
-                else
-                    txtMultiplier.Text = txtMultiplier.Text + 9;
+                if (TabControlValue)
+                {
+                    ValidateAdmin();
+                    lblStatus.Text = "No Update";
+                    lblStatus.ForeColor = Color.Salmon;
+                    if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
+                        txtMultiplier.Text = "9";
+                    else
+                        txtMultiplier.Text = txtMultiplier.Text + 9;
+                }
+                else if (!TabControlValue)
+                {
+                    lblStatPaper.Text = "Paper Count - No Update";
+                    lblStatPaper.ForeColor = Color.Salmon;
+                    if (txtPaperCount.Text == "0" && txtPaperCount.Text != null)
+                        txtPaperCount.Text = "9";
+                    else
+                        txtPaperCount.Text = txtPaperCount.Text + 9;
+                }
             }
-            else if (btnUpdate.LabelText == "View M")
+            else
             {
-                lblStatus.Text = "Paper Count - No Update";
-                lblStatus.ForeColor = Color.Red;
-                if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
-                    txtMultiplier.Text = "9";
+                if (txtCode.Text == "0" && txtCode.Text != null)
+                    txtCode.Text = "9";
                 else
-                    txtMultiplier.Text = txtMultiplier.Text + 9;
+                    txtCode.Text = txtCode.Text + 9;
             }
         }
 
         private void btnTen_Click(object sender, EventArgs e)
         {
-            if (btnUpdate.LabelText == "Update")
+            if (lblAdminStatus.Text == "Admin")
             {
-                ValidateAdmin();
-                lblStatus.Text = "No Update";
-                lblStatus.ForeColor = Color.Red;
-                if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
-                    txtMultiplier.Text = "0";
-                else
-                    txtMultiplier.Text = txtMultiplier.Text + 0;
+                if (TabControlValue)
+                {
+                    ValidateAdmin();
+                    lblStatus.Text = "No Update";
+                    lblStatus.ForeColor = Color.Salmon;
+                    if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
+                        txtMultiplier.Text = "0";
+                    else
+                        txtMultiplier.Text = txtMultiplier.Text + 0;
+                }
+                else if (!TabControlValue)
+                {
+                    lblStatPaper.Text = "Paper Count - No Update";
+                    lblStatPaper.ForeColor = Color.Salmon;
+                    if (txtPaperCount.Text == "0" && txtPaperCount.Text != null)
+                        txtPaperCount.Text = "0";
+                    else
+                        txtPaperCount.Text = txtPaperCount.Text + 0;
+                }
             }
-            else if (btnUpdate.LabelText == "View M")
+            else
             {
-                lblStatus.Text = "Paper Count - No Update";
-                lblStatus.ForeColor = Color.Red;
-                if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
-                    txtMultiplier.Text = "0";
+                if (txtCode.Text == "0" && txtCode.Text != null)
+                    txtCode.Text = "0";
                 else
-                    txtMultiplier.Text = txtMultiplier.Text + 0;
+                    txtCode.Text = txtCode.Text + 0;
             }
         }
 
         private void btnPeriod_Click(object sender, EventArgs e)
         {
-            if (btnUpdate.LabelText == "Update")
+            if (lblAdminStatus.Text == "Admin")
             {
-                ValidateAdmin();
-                lblStatus.Text = "No Update";
-                lblStatus.ForeColor = Color.Red;
-                if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
-                    txtMultiplier.Text = txtMultiplier.Text + ".";
+                if (TabControlValue)
+                {
+                    ValidateAdmin();
+                    lblStatus.Text = "No Update";
+                    lblStatus.ForeColor = Color.Salmon;
+                    if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
+                        txtMultiplier.Text = txtMultiplier.Text + ".";
+                }
+                else if (!TabControlValue)
+                {
+                    lblAdminStatusPaper.Text = "Paper Count - No Update";
+                    lblAdminStatusPaper.ForeColor = Color.Salmon;
+                    if (txtPaperCount.Text == "0" && txtPaperCount.Text != null)
+                        txtPaperCount.Text = "";
+                    else
+                        txtPaperCount.Text = txtPaperCount.Text + ".";
+                }
             }
-            else if (btnUpdate.LabelText == "View M")
+            else
             {
-                lblStatus.Text = "Paper Count - No Update";
-                lblStatus.ForeColor = Color.Red;
-                if (txtMultiplier.Text == "0" && txtMultiplier.Text != null)
-                    txtMultiplier.Text = txtMultiplier.Text + ".";
+                if (txtCode.Text == "0" && txtCode.Text != null)
+                    txtCode.Text = txtCode.Text + ".";
             }
+
 
         }
 
@@ -392,12 +500,20 @@ namespace Printing.Kiosk.Forms
             bool UserStat = false;
             if (lblAdminStatus.Text == "Not Admin")
             {
-                if(txtMultiplier.Text == "12345")
+                if (txtCode.Text == "12345")
                 {
                     groupBoxButtons.Enabled = true;
                     lblAdminStatus.Text = "Admin";
-                    lblAdminStatus.ForeColor = Color.Green;
+                    lblAdminStatusPaper.Text = "Admin";
+                    lblAdminStatusPaper.ForeColor = Color.PaleGreen;
+                    lblAdminStatus.ForeColor = Color.PaleGreen;
+                    panel1.Hide();
                     UserStat = true;
+                }
+                else
+                {
+                    var MsgStat = new MessageAlerts();
+                    MsgStat.ExceptionMessage("Incorrect Code");
                 }
                 
             }
@@ -425,7 +541,7 @@ namespace Printing.Kiosk.Forms
                     {
                         if (xtr.NodeType == XmlNodeType.Element && xtr.Name == "paper")
                         {
-                            txtMultiplier.Text = xtr.ReadElementContentAsString();
+                            txtPaperCount.Text = xtr.ReadElementContentAsString();
                             xtr.Close();
                         }
 
@@ -440,7 +556,7 @@ namespace Printing.Kiosk.Forms
                 {
                     if (xtr.NodeType == XmlNodeType.Element && xtr.Name == "paper")
                     {
-                        txtMultiplier.Text = xtr.ReadElementContentAsString();
+                        txtPaperCount.Text = xtr.ReadElementContentAsString();
                         xtr.Close();
                     }
 
@@ -450,25 +566,32 @@ namespace Printing.Kiosk.Forms
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if(txtMultiplier.Text != "")
-            txtMultiplier.Text = txtMultiplier.Text.Remove(txtMultiplier.Text.Length - 1, 1);
+            if (lblAdminStatus.Text == "Admin")
+            {
+                if (TabControlValue)
+                {
+                    if (txtMultiplier.Text != "")
+                        txtMultiplier.Text = txtMultiplier.Text.Remove(txtMultiplier.Text.Length - 1, 1);
+                }
+                else
+                {
+                    if (txtPaperCount.Text != "")
+                        txtPaperCount.Text = txtPaperCount.Text.Remove(txtPaperCount.Text.Length - 1, 1);
+                }
+            }
+            else
+            {
+                if (txtCode.Text != "")
+                    txtCode.Text = txtCode.Text.Remove(txtCode.Text.Length - 1, 1);
+            }
+           
         }
 
         private void btnRefillPaper_Click(object sender, EventArgs e)
         {
             try
             {
-                if (btnRefillPaper.LabelText == "Paper Count")
-                {
-                    LoadPaperCount();
-                    btnRefillPaper.LabelText = "Refill Paper";
-                    btnUpdate.LabelText = "View M";
-                    lblStatus.Text = "Paper Count - No Update";
-                    lblStatus.ForeColor = Color.Red;
-                }
-                else
-                {
-                    if(Convert.ToInt32(txtMultiplier.Text) > 25)
+                    if (Convert.ToInt32(txtPaperCount.Text) > 25)
                     {
                         var MsgStat = new MessageAlerts();
                         MsgStat.ExceptionMessage("Maximum No of Paper : 25");
@@ -479,13 +602,14 @@ namespace Printing.Kiosk.Forms
                         var node = xDoc.Descendants("Admin").FirstOrDefault(cd => cd.Element("paper").Value != "");
                         if (node.Name != null || node.Name != "")
                         {
-                            node.SetElementValue("paper", txtMultiplier.Text);
+                            node.SetElementValue("paper", txtPaperCount.Text);
                         }
                         xDoc.Save(path);
-                        lblStatus.Text = "Paper Count - Update";
-                        lblStatus.ForeColor = Color.Green;
+                        lblStatPaper.Text = "Paper Count - Update";
+                        lblStatPaper.ForeColor = Color.PaleGreen;
+                        LoadPaperCount();   
                     }
-                }
+                
             }
             catch (Exception ex)
             {
@@ -493,6 +617,29 @@ namespace Printing.Kiosk.Forms
                 MsgAlert.ExceptionMessage(ex.Message);
             }
 
+        }
+
+        //Detect Changes in the tabControl
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (tabControl.SelectedTab == tabControl.TabPages[0])//your specific tabname
+            {
+                //MessageBox.Show("Tab1");
+                TabControlValue = true;
+            }
+
+            if (tabControl.SelectedTab == tabControl.TabPages[1])
+            {
+
+                //MessageBox.Show("Tab2");
+                TabControlValue = false;
+            }
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            ValidateAdmin();
         }
     }
 }
