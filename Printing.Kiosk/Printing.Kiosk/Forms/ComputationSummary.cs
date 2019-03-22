@@ -32,6 +32,7 @@ namespace Printing.Kiosk.Forms
             txtCurrentBal.Enabled = false;
             btnPrint.Enabled = false;
             btnDispense.Enabled = false;
+            btnWithPaper.Enabled = false;
             txtPaperProvided.Text = "No";
         }
 
@@ -119,11 +120,10 @@ namespace Printing.Kiosk.Forms
                                 //txtCurrentBal.Text = Convert.ToString(InsertedCoin);
                                 if (Convert.ToInt32(txtCurrentBal.Text) == TAmount)
                                 {
-                                    if (withPaper == false)
+                                 
                                         btnDispense.Enabled = true;
-                                    else
-                                        btnWithPaper.Enabled = false;
-                                        btnPrint.Enabled = true;
+                                        btnWithPaper.Enabled = true;
+                                        //btnPrint.Enabled = true;
                                 }
                                 
                             }
@@ -184,6 +184,7 @@ namespace Printing.Kiosk.Forms
             dThread.Start();
         }
         #endregion
+
         private void btnPrint_Click(object sender, EventArgs e)
         {
             if (CheckReaminingPaperInDispenser() && !withPaper)
@@ -193,7 +194,12 @@ namespace Printing.Kiosk.Forms
                 serialPort1.WriteLine("b");
                 return;
             }
-                
+
+            ExecutePrint();
+        }
+
+        private void ExecutePrint()
+        {
             bool IsColor;
             short Copies = Convert.ToInt16(txtNoOfCopies.Text);
             if (txtColored.Text == "Yes")
@@ -201,13 +207,13 @@ namespace Printing.Kiosk.Forms
             else
                 IsColor = false;
             //Input balance here if statement
-            Main.FileLoc = FileLocFromMain ;
+            Main.FileLoc = FileLocFromMain;
             var printStatus = Main.PrintDocument(IsColor, Copies);
             if (printStatus == true)
             {
                 var Stat = new frmStatus();
                 var msgstatoutput = Stat.ShowDialog();
-                if(msgstatoutput == DialogResult.Cancel)
+                if (msgstatoutput == DialogResult.Cancel)
                 {
                     var path = Properties.Settings.Default.AdminPath + "Admin.xml";
                     var xDoc = XDocument.Load(path);
@@ -224,7 +230,6 @@ namespace Printing.Kiosk.Forms
                 }
 
             }
-         
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -252,6 +257,7 @@ namespace Printing.Kiosk.Forms
                 //Return a value of cost per page and if colored
                 var costPerImage = Convert.ToInt32(txtTotalAmount.Text)/(((Convert.ToInt32(txtNoOfCopies.Text) * 2) * Convert.ToInt32(txtNoOfPages.Text)));
                 txtTotalAmount.Text = Convert.ToString(costPerImage + ((Convert.ToInt32(txtNoOfCopies.Text) * 1) * Convert.ToInt32(txtNoOfPages.Text)));
+                ExecutePrint();
             }
             else
             {
@@ -263,6 +269,7 @@ namespace Printing.Kiosk.Forms
 
                 var costPerImage = Convert.ToInt32(txtTotalAmount.Text) / (((Convert.ToInt32(txtNoOfCopies.Text) * 2) * Convert.ToInt32(txtNoOfPages.Text)));
                 txtTotalAmount.Text = Convert.ToString(costPerImage + ((Convert.ToInt32(txtNoOfCopies.Text) * 1) * Convert.ToInt32(txtNoOfPages.Text)));
+                ExecutePrint();
             }
 
         }
