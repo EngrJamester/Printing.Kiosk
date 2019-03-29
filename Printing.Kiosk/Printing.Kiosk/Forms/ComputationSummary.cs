@@ -113,7 +113,7 @@ namespace Printing.Kiosk.Forms
                             var TAmount = Convert.ToInt32(txtTotalAmount.Text);
                             var TCurBal = Convert.ToInt32(txtCurrentBal.Text);
                            
-                            if (TAmount > TCurBal)
+                            if (TAmount >= TCurBal)
                             {
                                 
                                 //InsertedCoin = TCurBal + Convert.ToInt32(textBox1.Text);
@@ -165,6 +165,7 @@ namespace Printing.Kiosk.Forms
                         {
                             btnPrint.Enabled = true;
                             btnDispense.Enabled = false;
+                            btnWithPaper.Enabled = false;
                         }
                     }
 
@@ -221,7 +222,7 @@ namespace Printing.Kiosk.Forms
                     if (node.Name != null || node.Name != "")
                     {
                         int TotalRemaining = Convert.ToInt32(PaperCountLeft) - (Convert.ToInt32(txtNoOfCopies.Text) * Convert.ToInt32(txtNoOfPages.Text));
-                        node.SetElementValue("multiplier", TotalRemaining);
+                        node.SetElementValue("paper", TotalRemaining);
                     }
                     xDoc.Save(path);
                     PrintSuccess = true;
@@ -242,8 +243,23 @@ namespace Printing.Kiosk.Forms
         private void btnDispense_Click(object sender, EventArgs e)
         {
             //serialPort1.WriteLine("a");//sends off command when the previous state was on
-            Thread.Sleep(500);
-            serialPort1.WriteLine(Convert.ToString(Convert.ToInt32(txtNoOfPages.Text) * Convert.ToInt32(txtNoOfCopies.Text)));
+            //Thread.Sleep(500);
+            string PageValue = Convert.ToString(Convert.ToInt32(txtNoOfPages.Text) * Convert.ToInt32(txtNoOfCopies.Text));
+            serialPort1.WriteLine(PageValue);
+
+            var path = Properties.Settings.Default.AdminPath + "Admin.xml";
+            var xDoc = XDocument.Load(path);
+            var node = xDoc.Descendants("Admin").FirstOrDefault(cd => cd.Element("paper").Value != "");
+            if (node.Name != null || node.Name != "")
+            {
+                int value = Convert.ToInt32(PaperCountLeft) - Convert.ToInt32(PageValue);
+                if(value >= 0)
+                    node.SetElementValue("paper", value);
+                else
+                    node.SetElementValue("paper", 0);
+            }
+            xDoc.Save(path);
+            btnWithPaper.Enabled = false;
         }
 
         private void btnWithPaper_Click(object sender, EventArgs e)
@@ -285,7 +301,7 @@ namespace Printing.Kiosk.Forms
                 System.IO.Directory.CreateDirectory(Properties.Settings.Default.AdminPath);
                 if (!File.Exists(path))
                 {
-                    var xml = new XElement("Admin", new XElement("multiplier", 0.0), new XElement("paper", 25));
+                    var xml = new XElement("Admin", new XElement("multiplier", 0.09), new XElement("paper", 25));
                     xml.Save(path);
                 }
                 else

@@ -48,7 +48,6 @@ namespace Printing.Kiosk.Forms
         {
             try
             {
-              
                     var path = Properties.Settings.Default.AdminPath + "Admin.xml";
                     var xDoc = XDocument.Load(path);
                     var node = xDoc.Descendants("Admin").FirstOrDefault(cd => cd.Element("multiplier").Value != "");
@@ -59,8 +58,6 @@ namespace Printing.Kiosk.Forms
                     xDoc.Save(path);
                     lblStatus.Text = "File Has been updated";
                     lblStatus.ForeColor = Color.PaleGreen;
-                
-               
             }
             catch (Exception ex)
             {
@@ -520,6 +517,7 @@ namespace Printing.Kiosk.Forms
 
             return UserStat;
         }
+
         private void LoadPaperCount()
         {
             string path = Properties.Settings.Default.AdminPath + "Admin.xml"; // your code goes here
@@ -564,6 +562,7 @@ namespace Printing.Kiosk.Forms
             }
 
         }
+
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if (lblAdminStatus.Text == "Admin")

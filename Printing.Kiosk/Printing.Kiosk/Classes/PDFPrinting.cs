@@ -18,7 +18,8 @@ namespace Printing.Kiosk.Classes
 {
     public class PDFPrinting
     {
-        
+        frmSplashScreen splash = new frmSplashScreen();
+        //string DefaultReturn = Properties.Settings.Default.FolderPath + "file.pdf";
 
         //Handles the file which has a .doc/docx format
         public string FileInDocFormat { get; set; }
@@ -158,25 +159,27 @@ namespace Printing.Kiosk.Classes
 
         public string CheckFileFormat(bool DirectoryLocation)
         {
-            frmMain Main = new frmMain();
-            var splash = new frmSplashScreen();
-            OpenFileDialog openFile = new OpenFileDialog();
-            string outfile = Properties.Settings.Default.FolderPath+"file.pdf";
-
-            //Limits the user to open file
-            if (DirectoryLocation)
-                openFile.InitialDirectory = @"C:\FTP_Location";
-            else
-                openFile.InitialDirectory = "This PC";
-
-            openFile.Filter = "DOC files (*.doc)|*.docx ";
-            openFile.Filter = "Office Files|*.docx;*.doc;*.pdf;*.pptx;*.ppt;*.xls;*.xlsx";
-            
-
-            if (openFile.ShowDialog() == DialogResult.OK)
+            try
             {
-              
-                splash.Show();
+                frmMain Main = new frmMain();
+                
+                OpenFileDialog openFile = new OpenFileDialog();
+                string outfile = Properties.Settings.Default.FolderPath + "file.pdf";
+
+                //Limits the user to open file
+                if (DirectoryLocation)
+                    openFile.InitialDirectory = @"C:\FTP_Location";
+                else
+                    openFile.InitialDirectory = "This PC";
+
+                openFile.Filter = "DOC files (*.doc)|*.docx ";
+                openFile.Filter = "Office Files|*.docx;*.doc;*.pdf;*.pptx;*.ppt;*.xls;*.xlsx";
+
+
+                if (openFile.ShowDialog() == DialogResult.OK)
+                {
+
+                    splash.Show();
                     string file = openFile.FileName;
                     string extension = Path.GetExtension(file);
                     if (extension == ".doc" || extension == ".docx")
@@ -196,19 +199,31 @@ namespace Printing.Kiosk.Classes
                     }
                     else if (extension == ".pdf")
                     {
-                        FileInDocFormat=ConvertPDFtoWord(openFile.FileName);
+                        FileInDocFormat = ConvertPDFtoWord(openFile.FileName);
                         outfile = file;
                         ExcelFormat = false;
                     }
-                //return null;
+                    //return null;
+                    splash.Close();
+                }
+                else
+                {
+                    outfile = "";
+                }
+                
+                FileToBePrinted = outfile;
+                return outfile;
             }
-            else
+            catch (Exception ex)
             {
-                outfile = "";
+                if (splash.Visible)
+                    splash.Close();
+
+                var MsgStat = new MessageAlerts();
+                MsgStat.ExceptionMessage(ex.Message);
+                return null;
             }
-            splash.Close();
-            FileToBePrinted = outfile;
-            return outfile;
+          
         }
 
      
