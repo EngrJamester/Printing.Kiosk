@@ -18,7 +18,7 @@ namespace Printing.Kiosk.Classes
 {
     public class PDFPrinting
     {
-        frmSplashScreen splash = new frmSplashScreen();
+        
         //string DefaultReturn = Properties.Settings.Default.FolderPath + "file.pdf";
 
         //Handles the file which has a .doc/docx format
@@ -178,7 +178,7 @@ namespace Printing.Kiosk.Classes
 
                 if (openFile.ShowDialog() == DialogResult.OK)
                 {
-
+                    var splash = new frmSplashScreen();
                     splash.Show();
                     string file = openFile.FileName;
                     string extension = Path.GetExtension(file);
@@ -216,8 +216,8 @@ namespace Printing.Kiosk.Classes
             }
             catch (Exception ex)
             {
-                if (splash.Visible)
-                    splash.Close();
+                //if (splash.Visible)
+                //    splash.Close();
 
                 var MsgStat = new MessageAlerts();
                 MsgStat.ExceptionMessage(ex.Message);

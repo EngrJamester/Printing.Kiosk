@@ -47,7 +47,7 @@ namespace Printing.Kiosk.Forms
                 if (serialPort1.IsOpen == false)
                 {
                     serialPort1.BaudRate = 9600;
-                    serialPort1.PortName = "COM14";
+                    serialPort1.PortName = "COM16";
                     serialPort1.Parity = Parity.None;
                     serialPort1.StopBits = StopBits.One;
                     serialPort1.DataBits = 8;
@@ -71,6 +71,8 @@ namespace Printing.Kiosk.Forms
             withPaper = false;
             InitializeSerialPort();
             LoadDocument();
+            if (CheckReaminingPaperInDispenser())
+                MessageBox.Show("Paper is less than the assigned value","Transaction Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         #region "SerialPort Receive"
@@ -98,12 +100,11 @@ namespace Printing.Kiosk.Forms
                 }
                 else
                 {
-                    var val = text.Split('\r');
+                    //var val = text.Split('\r');
+                    var val = text;
 
-                    for (int i = 1; i < val.Length; i++)
-                    {
                         //Thread.Sleep(300);
-                        if (val[0] == "1")
+                        if (val == "1")
                         {
 
                             InsertedCoin = InsertedCoin + 1;
@@ -121,10 +122,20 @@ namespace Printing.Kiosk.Forms
                                 if (Convert.ToInt32(txtCurrentBal.Text) == TAmount)
                                 {
                                  
+                                    if(CheckReaminingPaperInDispenser())
+                                    {
+                                        btnDispense.Enabled = false;
+                                        btnWithPaper.Enabled = true;
+                                     }
+                                    else
+                                    {
                                         btnDispense.Enabled = true;
                                         btnWithPaper.Enabled = true;
                                         //btnPrint.Enabled = true;
-                                }
+                                    }
+
+
+                            }
                                 
                             }
                             else 
@@ -161,15 +172,17 @@ namespace Printing.Kiosk.Forms
                             //        txtCurrentBal.Text = "1";
                             //}
                         }
-                        else if(val[0] == "b")
+                        else if(val == "b")
                         {
                             btnPrint.Enabled = true;
                             btnDispense.Enabled = false;
                             btnWithPaper.Enabled = false;
                         }
                     }
+                //for (int i = 1; i < val.Length; i++)
+                //{
 
-                }
+                //}
             }
             catch (Exception ex)
             {
@@ -338,11 +351,19 @@ namespace Printing.Kiosk.Forms
 
         private bool CheckReaminingPaperInDispenser()
         {
-            var Count = (Convert.ToInt32(txtNoOfCopies.Text) * Convert.ToInt32(txtNoOfPages.Text));
-            if (Convert.ToInt32(PaperCountLeft) < Count)
+            //var Count = (Convert.ToInt32(txtNoOfCopies.Text) * Convert.ToInt32(txtNoOfPages.Text));
+            if (Convert.ToInt32(PaperCountLeft) < 5)
+            {
+                btnDispense.Enabled = false;
                 return true;
+
+            }
             else
-               return false;
+            {
+             
+                return false;
+            }
+              
         }
 
         
