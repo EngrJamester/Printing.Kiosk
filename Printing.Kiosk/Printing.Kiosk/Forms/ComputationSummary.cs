@@ -47,7 +47,7 @@ namespace Printing.Kiosk.Forms
                 if (serialPort1.IsOpen == false)
                 {
                     serialPort1.BaudRate = 9600;
-                    serialPort1.PortName = "COM16";
+                    serialPort1.PortName = "COM6";
                     serialPort1.Parity = Parity.None;
                     serialPort1.StopBits = StopBits.One;
                     serialPort1.DataBits = 8;
@@ -140,7 +140,7 @@ namespace Printing.Kiosk.Forms
                             }
                             else 
                             {
-                                btnDispense.Enabled = true;
+                                //btnDispense.Enabled = true;
                                 MessageBox.Show("Balance is now sufficient", "Transaction Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             //if (textBox1.Text != "")
@@ -352,7 +352,7 @@ namespace Printing.Kiosk.Forms
         private bool CheckReaminingPaperInDispenser()
         {
             //var Count = (Convert.ToInt32(txtNoOfCopies.Text) * Convert.ToInt32(txtNoOfPages.Text));
-            if (Convert.ToInt32(PaperCountLeft) < 5)
+            if (Convert.ToInt32(PaperCountLeft) <= 5)
             {
                 btnDispense.Enabled = false;
                 return true;
