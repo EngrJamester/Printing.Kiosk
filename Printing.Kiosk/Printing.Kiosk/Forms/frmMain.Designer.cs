@@ -70,7 +70,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1280, 1024);
+            this.panel1.Size = new System.Drawing.Size(1280, 920);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -203,7 +203,7 @@
             this.panel4.Controls.Add(this.label1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.ForeColor = System.Drawing.Color.DimGray;
-            this.panel4.Location = new System.Drawing.Point(0, 987);
+            this.panel4.Location = new System.Drawing.Point(0, 883);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1280, 37);
             this.panel4.TabIndex = 8;
@@ -267,7 +267,7 @@
             this.btnWirelessTransfer.BackColor = System.Drawing.Color.DimGray;
             this.btnWirelessTransfer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnWirelessTransfer.BorderRadius = 0;
-            this.btnWirelessTransfer.ButtonText = "Wireless Transfer";
+            this.btnWirelessTransfer.ButtonText = "via FTP";
             this.btnWirelessTransfer.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnWirelessTransfer.DisabledColor = System.Drawing.Color.Gray;
             this.btnWirelessTransfer.ForeColor = System.Drawing.Color.DimGray;
@@ -292,10 +292,10 @@
             this.btnWirelessTransfer.selected = false;
             this.btnWirelessTransfer.Size = new System.Drawing.Size(463, 105);
             this.btnWirelessTransfer.TabIndex = 7;
-            this.btnWirelessTransfer.Text = "Wireless Transfer";
+            this.btnWirelessTransfer.Text = "via FTP";
             this.btnWirelessTransfer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnWirelessTransfer.Textcolor = System.Drawing.Color.White;
-            this.btnWirelessTransfer.TextFont = new System.Drawing.Font("Century Gothic", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWirelessTransfer.TextFont = new System.Drawing.Font("Century Gothic", 35.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnWirelessTransfer.Click += new System.EventHandler(this.btnWirelessTransfer_Click);
             // 
             // btnFlashDrive
@@ -400,7 +400,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1280, 1024);
+            this.ClientSize = new System.Drawing.Size(1280, 920);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
