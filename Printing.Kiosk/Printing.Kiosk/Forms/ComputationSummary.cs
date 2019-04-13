@@ -68,12 +68,25 @@ namespace Printing.Kiosk.Forms
 
         private void ComputationSummary_Load(object sender, EventArgs e)
         {
-            withPaper = false;
-            InitializeSerialPort();
-            LoadDocument();
-            if (CheckReaminingPaperInDispenser())
-                MessageBox.Show("Paper is less than the assigned value","Transaction Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                serialPort1.WriteLine(Convert.ToString(1000));
+            try
+            {
+                withPaper = false;
+                InitializeSerialPort();
+                LoadDocument();
+                if (CheckReaminingPaperInDispenser())
+                {
+                    MessageBox.Show("Paper is less than the assigned value", "Transaction Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    if(serialPort1.IsOpen)
+                        serialPort1.WriteLine(Convert.ToString(1000));
+                }
+                  
+            }
+            catch (Exception ex)
+            {
+                var MsgAlerts = new MessageAlerts();
+                MsgAlerts.ExceptionMessage(ex.Message);
+            }
+           
         }
 
         #region "SerialPort Receive"
@@ -249,8 +262,9 @@ namespace Printing.Kiosk.Forms
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            serialPort1.Close();
-            Main.Enabled = true;
+            if(serialPort1.IsOpen)
+                serialPort1.Close();
+
             this.Close();
         }
 
