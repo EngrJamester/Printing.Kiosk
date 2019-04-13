@@ -73,6 +73,7 @@ namespace Printing.Kiosk.Forms
             LoadDocument();
             if (CheckReaminingPaperInDispenser())
                 MessageBox.Show("Paper is less than the assigned value","Transaction Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                serialPort1.WriteLine(Convert.ToString(1000));
         }
 
         #region "SerialPort Receive"

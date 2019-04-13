@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Printing.Kiosk", "Printing.
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{D9F62249-FD97-4761-8459-073840949698}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Printing.Kiosk.Setup", "Printing.Kiosk.Setup\Printing.Kiosk.Setup.vdproj", "{6B622A11-B1E7-4E04-9173-5971BFB4787D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,8 @@ Global
 		{C8680F39-E824-437B-AA7E-2C96EAF2B9BA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D9F62249-FD97-4761-8459-073840949698}.Debug|Any CPU.ActiveCfg = Debug
 		{D9F62249-FD97-4761-8459-073840949698}.Release|Any CPU.ActiveCfg = Release
+		{6B622A11-B1E7-4E04-9173-5971BFB4787D}.Debug|Any CPU.ActiveCfg = Debug
+		{6B622A11-B1E7-4E04-9173-5971BFB4787D}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
