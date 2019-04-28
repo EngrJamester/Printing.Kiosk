@@ -151,13 +151,13 @@ namespace Printing.Kiosk
                 if (PrintColor == true)
                 {
                     //Return a value of cost per page and if colored
-                    CompSum.txtTotalAmount.Text = Convert.ToString(costPerImage + ((printDialog.PrinterSettings.Copies * 2) * pdfViewer1.NumberOfPages));
+                    CompSum.txtTotalAmount.Text =  Convert.ToString(costPerImage + ((printDialog.PrinterSettings.Copies * 2) * pdfViewer1.NumberOfPages));
                     CompSum.txtColored.Text = "Yes";
                 }
                 else
                 {
                     //Return a value of cost per page and if not colored
-                    CompSum.txtTotalAmount.Text = Convert.ToString(costPerImage + ((printDialog.PrinterSettings.Copies * 1) * pdfViewer1.NumberOfPages));
+                    CompSum.txtTotalAmount.Text =  Convert.ToString(costPerImage + ((printDialog.PrinterSettings.Copies * 1) * pdfViewer1.NumberOfPages));
                     CompSum.txtColored.Text = "No";
                 }
 

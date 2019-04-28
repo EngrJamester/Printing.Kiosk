@@ -99,6 +99,8 @@ namespace Printing.Kiosk.Forms
         delegate void StringArgReturningVoidDelegate(string text);
         public int InsertedCoin = 0;
 
+        private bool ErrorCount { get; set; }
+
         private void SetText(string text)
         {
             try
@@ -117,7 +119,7 @@ namespace Printing.Kiosk.Forms
                     //var val = text.Split('\r');
                     var val = text;
 
-                        //Thread.Sleep(300);
+                    //Thread.Sleep(300);
                         if (val == "1")
                         {
 
@@ -130,32 +132,33 @@ namespace Printing.Kiosk.Forms
                            
                             if (TAmount >= TCurBal)
                             {
-                                
+                                ErrorCount = false;
                                 //InsertedCoin = TCurBal + Convert.ToInt32(textBox1.Text);
                                 //txtCurrentBal.Text = Convert.ToString(InsertedCoin);
                                 if (Convert.ToInt32(txtCurrentBal.Text) == TAmount)
                                 {
-                                 
-                                    if(CheckReaminingPaperInDispenser())
+                                    if (CheckReaminingPaperInDispenser())
                                     {
                                         btnDispense.Enabled = false;
                                         btnWithPaper.Enabled = true;
-                                     }
+                                    }
                                     else
                                     {
                                         btnDispense.Enabled = true;
                                         btnWithPaper.Enabled = true;
                                         //btnPrint.Enabled = true;
                                     }
-
-
-                            }
-                                
+                                }
                             }
                             else 
                             {
-                                //btnDispense.Enabled = true;
-                                MessageBox.Show("Balance is now sufficient", "Transaction Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            //btnDispense.Enabled = true;
+                                if(!ErrorCount)
+                                {
+                                    ErrorCount = true;
+                                    MessageBox.Show("Balance is now sufficient", "Transaction Notice", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                } 
+                                
                             }
                             //if (textBox1.Text != "")
                             //{

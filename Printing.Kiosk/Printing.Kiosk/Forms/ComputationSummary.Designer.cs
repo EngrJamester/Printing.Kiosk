@@ -53,6 +53,8 @@
             this.lblNoOfPages = new System.Windows.Forms.Label();
             this.txtPaperProvided = new Bunifu.Framework.UI.BunifuMetroTextbox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,12 +74,12 @@
             this.txtTotalAmount.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotalAmount.ForeColor = System.Drawing.Color.Gray;
             this.txtTotalAmount.isPassword = false;
-            this.txtTotalAmount.Location = new System.Drawing.Point(179, 235);
+            this.txtTotalAmount.Location = new System.Drawing.Point(241, 235);
             this.txtTotalAmount.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotalAmount.Name = "txtTotalAmount";
-            this.txtTotalAmount.Size = new System.Drawing.Size(259, 44);
+            this.txtTotalAmount.Size = new System.Drawing.Size(197, 44);
             this.txtTotalAmount.TabIndex = 0;
-            this.txtTotalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtTotalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             // 
             // lblTotalComputation
             // 
@@ -172,10 +174,10 @@
             this.txtCurrentBal.Font = new System.Drawing.Font("Century Gothic", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCurrentBal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtCurrentBal.isPassword = false;
-            this.txtCurrentBal.Location = new System.Drawing.Point(100, 379);
+            this.txtCurrentBal.Location = new System.Drawing.Point(184, 379);
             this.txtCurrentBal.Margin = new System.Windows.Forms.Padding(7);
             this.txtCurrentBal.Name = "txtCurrentBal";
-            this.txtCurrentBal.Size = new System.Drawing.Size(303, 127);
+            this.txtCurrentBal.Size = new System.Drawing.Size(254, 127);
             this.txtCurrentBal.TabIndex = 8;
             this.txtCurrentBal.Text = "0";
             this.txtCurrentBal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -334,11 +336,33 @@
             this.label1.TabIndex = 19;
             this.label1.Text = "Paper Provided";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(178, 239);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 32);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Php";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(66, 405);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(112, 56);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "Php";
+            // 
             // ComputationSummary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(728, 522);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtPaperProvided);
             this.Controls.Add(this.lblNoOfPages);
@@ -393,5 +417,7 @@
         public System.Windows.Forms.Button btnWithPaper;
         public System.Windows.Forms.Label label1;
         public Bunifu.Framework.UI.BunifuMetroTextbox txtPaperProvided;
+        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Label label3;
     }
 }
